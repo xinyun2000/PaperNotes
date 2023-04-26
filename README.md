@@ -1,2 +1,2 @@
 # papernotes
-## what did I read and what did I think
+what did I read and what did I think
