@@ -1,4 +1,5 @@
 # Attention is all you need
+transformer
 ## Abstract\Conclusion\Introduction\Background
 + Do only use attention without RNN or CNN
 + Makes generation less time-sensitive. don't need to input all the previous ht-1 before it can calculate t, it can be parallelized.
