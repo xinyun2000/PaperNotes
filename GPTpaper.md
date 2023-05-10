@@ -80,7 +80,7 @@ we can find that no matter how change the sub-task, no change to the model
 ### 4.1 setup
 Supervised pre-training (BooksCorpus data set), a corpus that uses 7,000 unpublished books and contains a large amount of continuous information, generative model to learn to condition on long-range information) Generative model to learn to condition on long-range information)
 ________________________________________________________________________________________
-what is called perplexity:
+*what is called perplexity:*<br>
 In short, it is the evaluation index of language model.
 
 The common evaluation index for the effectiveness of language models is the perplexity. The lower the perplexity of a test set, the better the effect of modeling. The formula for calculating perplexity is as follows:
@@ -108,7 +108,7 @@ Impact of number of layers transferred
 openai wants to migrate the model so that it can be trained unsupervised and then applied directly to multiple different downstream subtasks<br>
 This is where the concept of zero-shot comes in
 ________________________________________________________________________________________
-what is zero-shot:
+*what is zero-shot:*
 - The training set data is used to train the model, so that the model can classify the objects of the test set, but there is no intersection between the training set category and the test set category. During this period, it is necessary to establish the relationship between the training set and the test set with the help of the description of the categories, so as to make the model effective. (This will be applied to GPT2 to enable better migration of the entire model)
 - one example of zero-shot
 - Assuming we know the morphological characteristics of donkeys and horses, that tigers and hyenas are striped animals, that pandas and penguins are black and white animals, again, we define zebras as black and white striped equine animals. Without looking at any pictures of zebras, just by reasoning, we can find zebras among other animals in zoos.
