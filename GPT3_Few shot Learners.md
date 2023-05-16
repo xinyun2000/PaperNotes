@@ -24,11 +24,14 @@ can generate samples of news articles
 
 ## Approach
 + few shot<br>
-  more extension on zero-shot
+  more extension on zero-shot<br>
+  ![image](https://github.com/xinyun2000/papernotes/assets/130521370/c8ad9898-2b61-47ed-a3cf-3dbeab8039ec)
 + one-shot<br>
-  in-content learning,but only focus on in-content
+  in-content learning,but only focus on in-content<br>
+  ![image](https://github.com/xinyun2000/papernotes/assets/130521370/c1024553-c2ec-4574-8428-cadb315f9d50)
 + zero-shot<br>
-only a natural language description of the task
+only a natural language description of the task<br>
+![image](https://github.com/xinyun2000/papernotes/assets/130521370/33cab20b-a456-4d4c-b59c-e6d4b60fbe76)
 + fine-tuning<br>
 Train pre-training during fine tuning, provide some samples on each task, assuming using batch size 1 for training, give me one sample at a time, because there are labels to calculate losses and weights to update<br>
 
