@@ -8,18 +8,19 @@ can generate samples of news articles
 ## Introduction
 + recent years have featured a trend towards pre-trained language representations in NLP systems
 + have problem:
-++ a need for task-specific database and task-specific fine-tuning
-++ when models are designed to be large to absorb information during pre-training, but are then fine-tuned on very narrow task distribution, the fine-tuned model maybe not satisfied to the data which not appears in the database<br>
-big model is easy to overfitting on the small database, so a good fine-tuning result does not mean a good generalization.
-+ how to solve it:
-++ figure 1.1<br>
-language model meta-learning(few shot/sero shot)
-++ figure 1.2<br>
-meta-learning（in-context learning）,don't need to do any refresh
-model is a technic model which contains 10-100 samples
-++ few-shot learning, provide maybe 10-100 training samples
-++ one-shot learning, provide only one sample(like show how helloworld translates to French and then let you translate to French)
-++ zero-shot learning, don't give you any sample
+  a need for task-specific database and task-specific fine-tuning
+  when models are designed to be large to absorb information during pre-training, but are then fine-tuned on very narrow task distribution, the fine-tuned model     maybe not satisfied to the data which not appears in the database<br>
+  big model is easy to overfitting on the small database, so a good fine-tuning result does not mean a good generalization.
++ how to solve it:<br>
+  figure 1.1<br>
+  language model meta-learning(few shot/sero shot)<br>
+  
+  figure 1.2<br>
+  meta-learning（in-context learning）,don't need to do any refresh<br>
+  model is a technic model which contains 10-100 samples<br>
+  > few-shot learning, provide maybe 10-100 training samples<br>
+  > one-shot learning, provide only one sample(like show how helloworld translates to French and then let you translate to French)<br>
+  > zero-shot learning, don't give you any sample<br>
 
 ## Approach
 + few shot<br>
@@ -31,7 +32,7 @@ only a natural language description of the task
 + fine-tuning<br>
 Train pre-training during fine tuning, provide some samples on each task, assuming using batch size 1 for training, give me one sample at a time, because there are labels to calculate losses and weights to update<br>
 
-Fine tuning requires less data than training from zero because the start and end of the fine tuning are close
+  Fine tuning requires less data than training from zero because the start and end of the fine tuning are close
 
 ## Model and Architecture
 + use the same model and architecture as GPT2
