@@ -20,9 +20,11 @@
   ##### Unigram language modelling
 
   every words are independent, with no grammar between each other
+  
   $$
   P(W1,W2,...,Wn)=P(W1)P(W2)...P(Wn)
   $$
+  
   Parameter type: The possibility of a word
 
   Parameter instances: |V|
@@ -34,51 +36,31 @@
   **how to solve**: smoothing
 
   ​	add-one smoothing/add-α smoothing: let every word has a nonzero possibility
-
-  ​	![image-20230926170217757](C:\Users\QUAN\AppData\Roaming\Typora\typora-user-images\image-20230926170217757.png)
-
+    ![image](https://github.com/xinyun2000/PaperNotes/assets/130521370/fe87cb35-2a62-4fab-b51f-6acf460a6fe5)
+  
   #####  Bigram language modelling
-
-  condition on the previous word
-  $$
-  P(Wn|W2,...,Wn-1)=P(Wn|Wn-1)
-  $$
-  Using two consecutive words calculates the conditional possibility
-  $$
-  S=<S>W1W2...Wn</s>
-  $$
-
-  $$
-  P(S)=P(W1W2..Wn</s>|<s>)=P(W1|<s>)P(W2|W1)...P(</s>|Wn)
-  $$
-
   calculating method： Chain rule + Independent assumptions
-
+  
   **Sparsity**: the Binary phrase which doesn't show in the training set (much higher than possibility of the word doesn't show in the training set of Unigram)
 
-  **how to solve**: 1. **back-off estimation** 2. **Good-Turing estimation** 
-
-  ![image-20230926171113254](C:\Users\QUAN\AppData\Roaming\Typora\typora-user-images\image-20230926171113254.png)
+  **how to solve**: 1. **back-off estimation** 2. **Good-Turing estimation**
+  ![image](https://github.com/xinyun2000/PaperNotes/assets/130521370/f80aa6ba-7618-4fdf-8ef1-0a3bf67bc024)
 
   ##### Trigram language modelling
 
   Modeling target: P(s)
-
-  Parameterized model form:
-  $$
-  P(s)=P(W1|<s><s>)...P(</s>|Wn-1Wn)
-  $$
+  
   **Sparsity**: much higher than Bigram language model
 
   **Back-off estimation**: 
-
-  ![image-20230926172307782](C:\Users\QUAN\AppData\Roaming\Typora\typora-user-images\image-20230926172307782.png)
+  
+  ![image](https://github.com/xinyun2000/PaperNotes/assets/130521370/1571e75b-6508-4fb3-89a6-d4de8cb04beb)
 
   ##### Methods to address sparsity:
 
-  ![image-20230926172346145](C:\Users\QUAN\AppData\Roaming\Typora\typora-user-images\image-20230926172346145.png)
+  ![image](https://github.com/xinyun2000/PaperNotes/assets/130521370/1d513584-c0ed-4a7b-ab7a-207c7b962fc2)
 
-  ##### Log probability model
+   ##### Log probability model
 
   the number of occurrences is very small, the probability is also very small, not good for calculation, we can use the logarithmic method to transform the floating point number
 
@@ -98,7 +80,7 @@ problem of SLM: **Curse of Dimensionality**
 
 ### Neural language models(NLM)
 
-<A Neural Probabilistic Language Model>まだ読めない
+(A Neural Probabilistic Language Model)まだ読めない
 
 characterize the probability of word sequences by neural networks(RNN)
 
@@ -146,7 +128,7 @@ Difference between LLM and PLM:
 
 **Artificial general intelligence(AGI)**
 
-<planning for AGI and beyond> OpenAI まだ読めない
+(planning for AGI and beyond) OpenAI まだ読めない
 
 discusses the short-term and long-term plans to approach AGI, GPT4 may be an early version of an AGI system 
 
@@ -157,4 +139,8 @@ The fundamentals of LLM have not been explained:
 - Why emergent capabilities appears in the LLM
 - It is difficult for the research community to train competent LLMs
 - Possibility of toxic, fictitious and harmful content
+
+
+
+
 
