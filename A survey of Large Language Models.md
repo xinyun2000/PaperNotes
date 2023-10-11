@@ -6,20 +6,20 @@
 
 - based on the Markov assumption(predicting the next word based on the most recent context)
 
-- with a fixed context length n, called n-gram language model
+- with a fixed context length n, called the n-gram language model
 
   #### n-gram language model
 
-  gram: calculating window, bigram or trigram language models
+  gram: calculating window, bigram, or trigram language models
 
   the Markov chain, with two tasks:
 
   1. calculating the joint possibility(unigram model/bag-of words)
   2. calculating the conditional possibility(bigram/trigram/n-gram)
 
-  ##### Unigram language modelling
+  ##### Unigram language modeling
 
-  every words are independent, with no grammar between each other
+  every word are independent, with no grammar between each other
   
   $$
   P(W1,W2,...,Wn)=P(W1)P(W2)...P(Wn)
@@ -29,28 +29,28 @@
 
   Parameter instances: |V|
 
-   **Out-of-vocabulary**: the words which are not show in the training set
+   **Out-of-vocabulary**: the words that are not shown in the training set
 
-  ​	if the word is not show in the training set,  the model cannot give the possibility of the sentence which contains this word in the testing set
+  ​	if the word is not shown in the training set,  the model cannot give the possibility of the sentence that contains this word in the testing set
 
   **how to solve**: smoothing
 
-  ​	add-one smoothing/add-α smoothing: let every word has a nonzero possibility
+  ​	add-one smoothing/add-α smoothing: let every word have a nonzero possibility
     ![image](https://github.com/xinyun2000/PaperNotes/assets/130521370/fe87cb35-2a62-4fab-b51f-6acf460a6fe5)
   
-  #####  Bigram language modelling
+  #####  Bigram language modeling
   calculating method： Chain rule + Independent assumptions
   
-  **Sparsity**: the Binary phrase which doesn't show in the training set (much higher than possibility of the word doesn't show in the training set of Unigram)
+  **Sparsity**: the Binary phrase that doesn't show in the training set (much higher than the possibility of the word doesn't show in the training set of Unigram)
 
   **how to solve**: 1. **back-off estimation** 2. **Good-Turing estimation**
   ![image](https://github.com/xinyun2000/PaperNotes/assets/130521370/f80aa6ba-7618-4fdf-8ef1-0a3bf67bc024)
 
-  ##### Trigram language modelling
+  ##### Trigram language modeling
 
   Modeling target: P(s)
   
-  **Sparsity**: much higher than Bigram language model
+  **Sparsity**: much higher than the Bigram language model
 
   **Back-off estimation**: 
   
@@ -70,7 +70,7 @@ problem of SLM: **Curse of Dimensionality**
 
 - **Data sparsity problem:** have no true neighbor
 
-  e.g. in the K-nearest neighbor algorithm, when the number of variables to be considered becomes sufficiently large, there are almost no true neighbors. When binary variable becomes sufficiently large, the unique combination also becomes sufficiently large. Every unique combination with 10 samples can require an exponential level of the amount of samples.
+  e.g. in the K-nearest neighbor algorithm, when the number of variables to be considered becomes sufficiently large, there are almost no true neighbors. When a binary variable becomes sufficiently large, the unique combination also becomes sufficiently large. Every unique combination with 10 samples can require an exponential level of the number of samples.
 
 -  **increased computational complexity**: exponential level of calculation
 
@@ -136,11 +136,128 @@ GPT4 supports multi-model input by integrating the visual information
 
 The fundamentals of LLM have not been explained:
 
-- Why emergent capabilities appears in the LLM
+- Why emergent capabilities appear in the LLM
 - It is difficult for the research community to train competent LLMs
-- Possibility of toxic, fictitious and harmful content
+- Possibility of toxic, fictitious, and harmful content
 
+________________________________________________________________________________________
+## Overview
 
+### 2.1 Background for LLMs
 
+large language models refer to **Transformer** Language models(GPT3, PaLM, Galactica, **LLaMA**)
 
+basic background for LLMs: scaling laws, emergent abilities, and key techniques
 
+#### Scaling Laws for LLMs
+
+LLMs significantly extend the model size, data size, and total compute.
+
+need to establish a quantitative approach to characterizing the **scaling effect**
+
+##### KM scaling law
+
+- model performance respective to three major factors: model size(N), dataset size(D), the amount of  training compute(C)
+- **a larger budget allocation in model size than the data size**(model size↑ > data size↑）
+
+##### Chinchilla scaling law
+
+- compute budget depends on model size and data size
+- **model size and data size should be increased in equal scales**
+
+#### Emergent Abilities of LLMs
+
+has close connections with the phenomenon of *phase transition* in physics
+
+three typical emergent abilities: **in-context learning, instruction following, step-by-step reasoning**
+
+##### In-context learning
+
+- appears in LLMs but does not appear in PLMs
+- depends on the specific downstream task
+
+##### Instruction following
+
+- perform well on unseen tasks that are also described in the form of instructions
+- have an improved generalization ability
+- when the model size reaches quite an amount, it will show good generalization ability
+
+##### Step-by-step reasoning
+
+**Chain-of-thought prompting strategy (CoT)**
+
+> CoT & ICL
+>
+> Difference between CoT & ICL
+>
+> CoT focuses on teaching and ICL focuses on  training tasks from simple to difficult
+
+#### Key Techniques for LLMs
+
+##### Scaling
+
+although big data can improve the ability of LLM, it also should be controlled in a reasonable amount
+
+**How to control the calculation:**
+
+1. Keep model size, data size, and total calculation amount at a reasonable ratio
+2. use cleaning data
+
+##### Training
+
+The amount of training was too large, so the distributed parallel training algorithm was born.
+GPT4 directly implements new optimization solutions. The fundamental purpose is to increase the amount of data while controlling the amount of calculations.
+
+##### Ability eliciting
+
+In terms of generalization ability, general tasks may not reflect it, so professional tasks are needed to activate it and let it reflect such abilities.
+
+##### Alignment tuning
+
+reduce the harmful output
+
+##### Tools manipulation
+
+Limited by the expression format and the amount of pre-trained data, Chat GPT uses plug-ins to help synchronize update iterations
+
+### 2.2 Technical Evolution of GPT-series Models
+
+with two key points to the success:
+
+1. training **decoder-only** Transformer language models that can accurately predict the next word
+2. scaling up the size of language models
+
+when there is just RNN, have an idea. when the transformer comes out, OpenAI builds GPT-1
+
+##### GPT1&GPT2
+
+GPT1 is actually PLM
+
+GPT2 starts to perform tasks via unsupervised language modeling, without explicit fine-tuning using labeled data(have the idea of zero-shot/few-shot)
+
+##### GPT3
+
+formally introduced the concept of in-context learning, which utilizes LLMs in a few-shot or zero-shot
+
+become the LLMs
+
+**two major approaches** to further improving the GPT-3 model: training on code data & human alignment
+
+##### training on code data
+
+Codex: trained by Github code
+
+GPT3.5 models are developed based on a code-based model (code-davinci-002)
+
+##### human alignment
+
+using human preference to update the model
+
+##### (milestone)ChatGPT
+
+human-generated conversation
+
+##### (milestone)GPT4
+
+- extended the text input to **multimodal signals**
+- introduce a new mechanism called **predictable scaling** that can accurately predict the final performance with a small proportion of computing during model training
