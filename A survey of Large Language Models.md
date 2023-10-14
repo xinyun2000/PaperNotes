@@ -261,3 +261,107 @@ human-generated conversation
 
 - extended the text input to **multimodal signals**
 - introduce a new mechanism called **predictable scaling** that can accurately predict the final performance with a small proportion of computing during model training
+
+__________________________________________________________________
+## Resources of LLMs
+
+### 3.1 model checkpoint or APIs
+
+categorize the public models into two scale levels:  *tens of billions of parameters* and *hundreds of billions of parameters*
+
+#### tens of billions of parameters
+
+- FlanT5: explores the instruction tuning from three aspects: ***increasing the number of tasks***, ***scaling the model size*** and ***fine-tuning with chain-of-thought prompting data***.
+- CodeGen: autoregressive language model
+- mT0: fine-tuned on **multilingual tasks** with **multilingual prompts**
+- PanGu-α: good performance in **Chinese downstream tasks** in zero-shot or few-shot
+- Falcon: featured by a more careful data cleaning process to prepare the pre-training data
+
+![image-20231012160115525](https://github.com/xinyun2000/PaperNotes/assets/130521370/ab755bb9-db30-4dc4-87dd-7fc3b9941093)
+
+- LLaMA & LLaMA2 & LLaMA-chat
+
+#### Hundreds of Billions of Parameters
+
+only a handful of models have be publicly released
+
+#### LLaMA Model Family
+
+1. effectively adapt LLaMA models in non-English languages
+2. often needs to **extend the original vocabulary**(trained mainly on English corpus) or f**ine-tune it with instructions or data in the target language**
+3. self-instruct using **text-davinci-003**
+
+#### public API of LLMs
+
+- OpenAI
+- two APIs related to Codex: **code-cushman-001 **& **code-davinci-002**
+
+### 3.2 Commonly used Corpora
+
+- books
+
+  > **BookCorpus** (GPT/GPT-2) 
+  >
+  > **Project Gutenberg**(MT-NLG LLaMA)
+
+- CommonCrawl
+
+  > crawling databases(noisy and low-quality information in web data/perform data preprocessing before usage)
+  >
+  > **C4**
+  >
+  > **CC-Stories**
+  >
+  > **CC-News**
+  >
+  > **RealNews**
+
+- Reddit
+
+  > GPT2 uses WebText which relay on Reddit, much more accurate than GPT1
+  >
+  > **WebText** is not publicly available, so **OpenWebText** exists
+  >
+  > **PushShift.io**: real-time updated dataset
+
+- Wikipedia
+
+  >  the English-only filtered versions of Wikipedia are widely used in most LLMs (e.g., GPT-3, LaMDA, and LLaMA
+
+- Code
+
+  > Github & StackOverflow
+
+- others
+
+LLMs always trains on various sources
+
+### 3.3 Library Resource
+
+- Transformers
+
+  > an open-source Python library for **building models using the Transformer architecture**
+
+- DeepSpeed
+
+  > a deep learning optimization library(compatible with **PyTorch)**
+
+- Megatorn-LM 
+
+  > a deep learning library developed by NVIDIA for training large-scale language models.  provides **rich optimization techniques for distributed training.**
+
+- JAX
+
+  > a Python library for high-performance machine learning algorithms developed by Google, allowing users to **easily perform computations on arrays with hardware acceleration**(GPU & TPU)
+
+- Colossal-AI
+
+  > a deep learning library for training large-scale AI models. based on PyTorch and **supports a rich collection of parallel training strategies.**
+
+- BMTrain
+
+  > an efficient library for training models with large-scale parameters in **a distributed manner**, which **emphasizes code simplicity, low resource, and high availability**
+
+- FastMoE
+
+  > a specialized training library for MoE (i.e., mixture-of-experts) models.
