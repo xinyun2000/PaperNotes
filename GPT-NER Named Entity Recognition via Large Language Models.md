@@ -1,26 +1,26 @@
 # GPT-NER: Named Entity Recognition via Large Language Models
 
-**main issue to be solved:**
+**Main issue to be solved:**
 
-GPT perform not quite good on NER(Named Entity Recognition) task.
+   GPT performs not quite well on the NER(Named Entity Recognition) task.
 
-**reason for the issue:**
+**Reason for the issue:**
 
-GPT is a text-generation model, but not a multi-classify model, NER task is a sequence labeling task.
+   GPT is a next-generation model, but not a multi-classify model, NER task is a sequence labeling task.
 
-**to solve it:** 
+**To solve it:** 
 
-change the classification task to text generation task.
+   change the classification task to a text generation task.
 
 ## Introduction
 
-what is NER task: divide sentence in tokens and label each token.
+what is the NER task: divide the sentence into tokens and label each token.
 
 _________________________________________________________________________________________________________________________________________________
 
 LLM's biggest problem: hallucination issue
 
-to solve it: add self-verification strategy right after the entity extraction stage, let LLM ask itself whether the word belongs to the classification which we ask it to output
+to solve it: add a self-verification strategy right after the entity extraction stage, let LLM ask itself whether the word belongs to the classification which we ask it to output
 
 
 
@@ -30,7 +30,7 @@ to solve it: add self-verification strategy right after the entity extraction st
 
 1. Representation Extraction
 
-   - embedding each sentence and send them to the model, model output a much higher dimensional vector with the representation of each words
+   - embedding each sentence and sending them to the model, the model outputs a much higher dimensional vector with the representation of each word
 
    - e.g., each token[50 dimension], each sentence has 5 token[5,50dimension], BERT parameter is 1024, output[5,1024]
 
@@ -46,7 +46,7 @@ three steps:
 
 1. Prompt Construction
 2. generate text sequence
-3. transform sequence to get final result
+3. transform the sequence to get the final result
 
 ### Prompt Construction
 
@@ -64,7 +64,7 @@ three steps:
 
      **“Below are some examples”**
 
-2. #### Few-shot Demonstration (provide in a list of example)
+2. #### Few-shot Demonstration (provide a list of examples)
 
    why:
 
@@ -80,7 +80,7 @@ three steps:
 
    - Random Retrieval
 
-     may have different semantical relationship with the sentence which need to be labelled.
+     may have a different semantical relationship with the sentence which needs to be labeled.
 
    - kNN-based retrieval
 
@@ -90,7 +90,7 @@ three steps:
 
 3. #### Self-verification
 
-   - Ask it self whether the word it labels belong to the classification which we ask it to output
+   - Ask itself whether the word it labels belongs to the classification which we ask it to output
 
    - prompt:
 
@@ -104,9 +104,10 @@ three steps:
 
      kNN-based retrieval
 
-![1698909539036](C:\Users\QUAN\Documents\WeChat Files\wxid_huobapv11fgp21\FileStorage\Temp\1698909539036.png)
+![1698909539036](https://github.com/xinyun2000/PaperNotes/assets/130521370/2b13ec69-3143-46a4-892d-92511b047dc9)
 
-![1698910374651](C:\Users\QUAN\Documents\WeChat Files\wxid_huobapv11fgp21\FileStorage\Temp\1698910374651.png)
+![1698910374644](https://github.com/xinyun2000/PaperNotes/assets/130521370/09fd15e8-e307-4180-a92e-55b364faed68)
+
 
 
 
